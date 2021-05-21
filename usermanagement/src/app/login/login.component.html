@@ -1,0 +1,29 @@
+<header>
+  <div class="main-header">
+    <h3>Login</h3>
+    <hr />
+    <h4>Welcome to Admin dashboard</h4>
+    <p>
+      <input
+        type="text"
+        placeholder="username"
+        [(ngModel)]="username"
+        #usernameref
+      />
+    </p>
+    <p>
+      <input
+        type="text"
+        placeholder="password"
+        [(ngModel)]="password"
+        #passwordref
+      />
+    </p>
+    <div class="error-element" *ngIf="errorMsg.length > 0">
+      <small class="text-danger"
+        ><i>{{ errorMsg }}</i></small
+      >
+    </div>
+    <p><button class="primary-btn" (click)="userlogin()">login</button></p>
+  </div>
+</header>
