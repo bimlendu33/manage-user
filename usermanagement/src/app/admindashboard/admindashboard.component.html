@@ -1,30 +1,135 @@
-<div class="container-el">
-  <h3>Welcome to admin dashboard</h3>
-  <hr />
-  <table>
+<div class="manage-employee-container">
+  <h3 class="text-center">
+    <u>Welcome to Infrrd Admin Dashboard</u>
+  </h3>
+  <div class="employee">
+    <input
+      type="text"
+      placeholder="search employee"
+      class="employee-input"
+      [(ngModel)]="searchText"
+    />
+    <button class="primary-btn create-employee-btn" (click)="createEmployee()">
+      create employee
+    </button>
+  </div>
+  <table class="table manage-employee-table">
     <thead>
       <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Job Title</th>
-        <th>Twitter</th>
-        <th>Edit</th>
+        <th>EMPLOYEE ID</th>
+        <th>NAME</th>
+        <th>EMAIL ID</th>
+        <th>CONTACT</th>
+        <th>DESIGNATION</th>
+        <th>EDIT</th>
         <th>Remove</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td data-column="First Name">James</td>
-        <td data-column="Last Name">Matman</td>
-        <td data-column="Job Title">Chief Sandwich Eater</td>
-        <td data-column="Twitter">@james</td>
+      <tr
+        *ngFor="
+          let employee of employeeList | customerEmailFilter: searchText;
+          let i = index
+        "
+      >
+        <td data-column="First Name">{{ employee.empid }}</td>
+        <td data-column="Last Name">{{ employee.empName }}</td>
+        <td data-column="Job Title">{{ employee.empEmailID }}</td>
+        <td data-column="Twitter">{{ employee.empContact }}</td>
+        <td data-column="Twitter">{{ employee.empDesignation }}</td>
         <td data-column="Remove">
-          <a class="edit-btn" href=""><small>Edit</small></a>
+          <button
+            class="primary-btn"
+            [routerLink]="['/employee', employee.empid]"
+          >
+            <small>Edit</small>
+          </button>
         </td>
         <td data-column="Remove">
-          <strong class="remove-icon" title="remove item">X</strong>
+          <button class="remove-btn" (click)="removeEmployee(i)">
+            <small>X</small>
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <!-- The Modal -->
+  <div id="confirmDeleteModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <div class="text-center">
+        <img
+          class="warning-icon"
+          src="../../assets/delete_warning.png"
+          alt=""
+        />
+        <p>
+          <span
+            >Are your sure, you want to delete the user
+            <b>{{ employeeToBeDeleted?.empName }}?</b></span
+          >
+        </p>
+      </div>
+      <div class="action-buttons">
+        <button class="default-btn" (click)="closeModal()">Cancel</button>
+        <button class="primary-btn position-confirm" (click)="confirmDelete()">
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="createEmployeeModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="closeCreateEmployee" (click)="closeCreateEmployeeModal()"
+        >&times;</span
+      >
+      <div class="create-employee-modal">
+        <h3>Create Employee:</h3>
+        <input
+          type="text"
+          placeholder="employee name"
+          [(ngModel)]="createEmployeeObj.empName"
+          class="employee-input m5"
+        />
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Employee Email ID.."
+          [(ngModel)]="createEmployeeObj.empEmailID"
+          class="employee-input m5"
+        />
+        <input
+          type="number"
+          max="9999999999"
+          name="contact"
+          placeholder="Employee Contact.."
+          [(ngModel)]="createEmployeeObj.empContact"
+          class="employee-input m5"
+        />
+        <select
+          class="employee-input m5"
+          [(ngModel)]="createEmployeeObj.empDesignation"
+          name="empDesignation"
+        >
+          <option *ngFor="let level of designations" [ngValue]="level">
+            {{ level }}
+          </option>
+        </select>
+      </div>
+      <div class="action-buttons">
+        <button class="default-btn" (click)="closeCreateEmployeeModal()">
+          Cancel
+        </button>
+        <button class="primary-btn position-confirm" (click)="addEmployee()">
+          create
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
+<div style="margin-bottom: 20px"></div>

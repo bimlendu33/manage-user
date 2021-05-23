@@ -1,31 +1,109 @@
 body {
   margin: 0;
-  padding: 0;
+  font-family: sans-serif;
+  word-wrap: break-word;
 }
-table {
-  width: 750px;
+* {
+  box-sizing: border-box;
+}
+
+.table {
+  width: 80%;
   border-collapse: collapse;
+  margin: 0 auto;
+  max-width: 80%;
+  overflow-x: scroll;
 }
 
-/* Zebra striping */
-tr:nth-of-type(odd) {
-  background: #eee;
-}
-
-th {
-  background: #3498db;
-  color: white;
-  font-weight: bold;
-}
-
-td,
-th {
-  padding: 10px;
-  border: 1px solid #ccc;
+.table td,
+.table th {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
   text-align: center;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
+.table th {
+  background-color: darkblue;
+  color: #ffffff;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+/*responsive*/
+
+@media (max-width: 500px) {
+  .table thead {
+    display: none;
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+  .table tr {
+    margin-bottom: 15px;
+  }
+  .table td {
+    text-align: left;
+    position: relative;
+  }
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+.primary-btn {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 0.375rem 0.75rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+.primary-btn:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+.default-btn {
+  color: #fff;
+  background-color: lightgrey;
+  padding: 0.375rem 0.75rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  border: 2px solid lightgrey;
+}
+.default-btn:hover {
+  background-color: darkgrey;
+}
+.text-danger {
+  color: red;
+  float: right;
+}
+.error-element {
+  width: 100%;
+  display: inline-block;
+}
+.remove-btn {
+  border: none;
+  font-size: 20px;
+  color: red;
+  font-weight: bold;
+  background: none;
+  cursor: pointer;
+}
 .remove-icon {
   color: red;
   cursor: pointer;
@@ -34,4 +112,32 @@ th {
 
 .edit-btn {
   text-decoration: none;
+}
+.warning-icon {
+  width: 50px;
+  height: 50px;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-muted {
+  color: grey;
+}
+.pl-5 {
+  padding: 5px;
+}
+.ml-5 {
+  margin-left: 5px;
+}
+.mt-5 {
+  margin-top: 5px;
+}
+.m5 {
+  margin: 5px;
 }

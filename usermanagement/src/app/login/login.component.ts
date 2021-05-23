@@ -15,7 +15,6 @@ import { User } from '../constants/manage-user-constants';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent implements OnInit, AfterViewInit {
   username: string;
@@ -56,7 +55,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       if (this.username === user.name && this.password === user.password) {
         if (user.role === 'admin') {
           this.errorMsg = '';
-          this._router.navigate(['/useradmin-dashboard']);
+          this._router.navigate(['/useradmin_dashboard']);
         } else {
           this.errorMsg =
             'You are not authorized, please contact administration';

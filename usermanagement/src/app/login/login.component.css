@@ -15,6 +15,13 @@ header {
   padding: 40px;
   box-shadow: 0px 0px 10px 10px cadetblue;
 }
+
+@media (min-width: 280px) and (max-width: 653px) {
+  .main-header {
+    padding: 30px 15px;
+  }
+}
+
 input {
   padding: 7px 10px 7px 10px !important;
   width: 30vh !important;
@@ -27,32 +34,4 @@ input:focus {
   border-color: #80bdff;
   outline: 0;
   border-radius: 5px;
-}
-
-.primary-btn {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
-  padding: 0.375rem 0.75rem;
-  cursor: pointer;
-  border-radius: 0.25rem;
-}
-.primary-btn:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
-}
-.text-danger {
-  color: red;
-  float: right;
-}
-.error-element {
-  width: 100%;
-  display: inline-block;
-}
-
-@media (min-width: 280px) and (max-width: 653px) {
-  .main-header {
-    padding: 30px 15px;
-  }
 }

@@ -8,11 +8,20 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './authService/authentication.service';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { EmployeeService } from './employeeService/employee-service.service';
+import { EmployeedetailsComponent } from './employeedetails/employeedetails.component';
+import { SearchPipe } from './filters/search.pipe';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, AdmindashboardComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    AdmindashboardComponent,
+    EmployeedetailsComponent,
+    SearchPipe,
+  ],
   imports: [HttpClientModule, FormsModule, BrowserModule, AppRoutingModule],
-  providers: [AuthenticationService],
+  providers: [EmployeeService, AuthenticationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

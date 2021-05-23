@@ -1,0 +1,79 @@
+<div class="update-employee-container">
+  <h3>
+    <span class="text-muted">Update details for employee:</span>
+    {{ employee.empid }}
+  </h3>
+  <div class="container">
+    <form autocomplete="off">
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">Employee Avatar</label>
+        </div>
+        <div class="col-75"></div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">Employee Name</label>
+        </div>
+        <div class="col-75">
+          <input
+            type="text"
+            id="fname"
+            name="fullname"
+            placeholder="Employee name.."
+            [(ngModel)]="employee.empName"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="email">Email ID</label>
+        </div>
+        <div class="col-75">
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="Employee Email ID.."
+            [(ngModel)]="employee.empEmailID"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="email">Employee Contact</label>
+        </div>
+        <div class="col-75">
+          <input
+            type="number"
+            max="9999999999"
+            name="contact"
+            placeholder="Employee Contact.."
+            [(ngModel)]="employee.empContact"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="employeeDesignation">Employee Designation</label>
+        </div>
+        <div class="col-75">
+          <select [(ngModel)]="employee.empDesignation" name="empDesignation">
+            <option *ngFor="let level of designations" [ngValue]="level">
+              {{ level }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <button class="primary-btn" (click)="updateEmployee()">update</button>
+        <button
+          class="default-btn ml-5"
+          [routerLink]="['/useradmin_dashboard']"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
